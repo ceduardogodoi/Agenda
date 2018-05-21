@@ -9,6 +9,8 @@ public class ListaAlunosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_alunos);
+
+        // Aula 01 Exercício 03 - Melhorando a lista
     }
     
 }
