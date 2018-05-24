@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ListaAlunosActivity"
-            android:label="Lista de Alunos">
+            android:label="Agenda">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
