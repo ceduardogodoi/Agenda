@@ -19,6 +19,20 @@ public class ListaAlunosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_alunos);
 
+        Button novoAluno = findViewById(R.id.novo_aluno);
+        novoAluno.setOnClickListener(view -> {
+            Intent intentVaiProFormulario = new Intent(ListaAlunosActivity.this, FormularioActivity.class);
+            startActivity(intentVaiProFormulario);
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        carregaLista();
+    }
+
+    private void carregaLista() {
         AlunoDAO dao = new AlunoDAO(this);
         List<Aluno> alunos = dao.buscaAlunos();
         dao.close();
@@ -26,14 +40,6 @@ public class ListaAlunosActivity extends AppCompatActivity {
         ListView listaAlunos = findViewById(R.id.lista_alunos);
         ArrayAdapter<Aluno> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, alunos);
         listaAlunos.setAdapter(adapter);
-
-        // Vídeo parou em 11:00
-
-        Button novoAluno = findViewById(R.id.novo_aluno);
-        novoAluno.setOnClickListener(view -> {
-            Intent intentVaiProFormulario = new Intent(ListaAlunosActivity.this, FormularioActivity.class);
-            startActivity(intentVaiProFormulario);
-        });
     }
 
 }
