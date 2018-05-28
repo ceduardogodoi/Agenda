@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -26,6 +27,11 @@ public class ListaAlunosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lista_alunos);
 
         listaAlunos = findViewById(R.id.lista_alunos);
+
+        listaAlunos.setOnItemClickListener((AdapterView<?> lista, View item, int position, long id) -> {
+            Aluno aluno = (Aluno) lista.getItemAtPosition(position);
+            Toast.makeText(ListaAlunosActivity.this, "Aluno " + aluno.getNome(), Toast.LENGTH_SHORT).show();
+        });
 
         Button novoAluno = findViewById(R.id.novo_aluno);
         novoAluno.setOnClickListener(view -> {
