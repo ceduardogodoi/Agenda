@@ -77,7 +77,6 @@ public class AlunoDAO extends SQLiteOpenHelper {
         String[] params = {aluno.getId().toString()};
 
         db.delete("Alunos", "id = ?", params);
-
-        // Vídeo parou em 17 minutos.
     }
+
 }
