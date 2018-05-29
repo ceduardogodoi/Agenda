@@ -1,13 +1,15 @@
 package br.com.alura.agenda.modelo;
 
-public class Aluno {
+import java.io.Serializable;
+
+public class Aluno implements Serializable {
 
     private Long id;
     private String nome;
     private String endereco;
     private String telefone;
     private String site;
-    private double nota;
+    private Double nota;
 
     public Long getId() {
         return id;
@@ -49,11 +51,11 @@ public class Aluno {
         this.site = site;
     }
 
-    public double getNota() {
+    public Double getNota() {
         return nota;
     }
 
-    public void setNota(double nota) {
+    public void setNota(Double nota) {
         this.nota = nota;
     }
 
@@ -61,4 +63,5 @@ public class Aluno {
     public String toString() {
         return getId() + " - " + getNome();
     }
+
 }
