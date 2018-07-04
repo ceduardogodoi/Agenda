@@ -83,7 +83,9 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
                 dao.close();
 
-                Toast.makeText(this, json, Toast.LENGTH_LONG).show();
+                WebClient client = new WebClient();
+                String resposta = client.post(json);
+                Toast.makeText(this, resposta, Toast.LENGTH_LONG).show();
                 break;
         }
 
