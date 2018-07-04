@@ -11,7 +11,6 @@ import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -23,12 +22,19 @@ import br.com.alura.agenda.modelo.Aluno;
 
 public class ListaAlunosActivity extends AppCompatActivity {
 
+    private static final int CODIGO_SMS = 1;
+
     private ListView listaAlunos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_alunos);
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECEIVE_SMS}, CODIGO_SMS);
+        }
 
         listaAlunos = findViewById(R.id.lista_alunos);
 
