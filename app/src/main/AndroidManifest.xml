@@ -22,7 +22,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".FormularioActivity"
             android:label="Formulário" />
@@ -43,6 +42,7 @@
             </intent-filter>
         </receiver>
 
+        <activity android:name=".ProvasActivity"></activity>
     </application>
 
 </manifest>

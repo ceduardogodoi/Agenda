@@ -6,8 +6,14 @@
 
     <item
         android:id="@+id/menu_enviar_notas"
-        android:title="Enviar notas"
         android:icon="@drawable/ic_enviar"
+        android:title="Enviar notas"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/menu_baixar_provas"
+        android:icon="@drawable/ic_receber"
+        android:title="Baixar provas"
         app:showAsAction="always" />
 
 </menu>
