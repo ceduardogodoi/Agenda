@@ -10,6 +10,7 @@ import java.util.List;
 import br.com.alura.agenda.converter.AlunoConverter;
 import br.com.alura.agenda.dao.AlunoDAO;
 import br.com.alura.agenda.modelo.Aluno;
+import br.com.alura.agenda.web.WebClient;
 
 public class EnviaAlunosTask extends AsyncTask<Void, Void, String> {
 

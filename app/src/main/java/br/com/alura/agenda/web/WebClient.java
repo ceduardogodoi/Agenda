@@ -1,4 +1,4 @@
-package br.com.alura.agenda;
+package br.com.alura.agenda.web;
 
 import java.io.IOException;
 import java.io.PrintStream;

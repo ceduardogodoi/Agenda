@@ -1,5 +1,6 @@
 package br.com.alura.agenda;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
@@ -22,7 +23,7 @@ public class ProvasActivity extends AppCompatActivity {
         Prova provaPortugues = new Prova("Português", "25/05/2016", topicosPort);
 
         List<String> topicosMat = Arrays.asList("Equações de Segundo Grau", "Trigonometria");
-        Prova provaMatematica = new Prova("Matematica", "27/05/2016", topicosMat);
+        Prova provaMatematica = new Prova("Matemática", "27/05/2016", topicosMat);
 
         List<Prova> provas = Arrays.asList(provaPortugues, provaMatematica);
         ArrayAdapter<Prova> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, provas);
@@ -33,6 +34,11 @@ public class ProvasActivity extends AppCompatActivity {
         lista.setOnItemClickListener((parent, view, position, id) -> {
             Prova prova = (Prova) parent.getItemAtPosition(position);
             Toast.makeText(ProvasActivity.this, "Clicou na prova de " + prova, Toast.LENGTH_SHORT).show();
+
+            Intent vaiParaDetalhes = new Intent(ProvasActivity.this, DetalhesProvaActivity.class);
+            vaiParaDetalhes.putExtra("prova", prova);
+
+            startActivity(vaiParaDetalhes);
         });
     }
 

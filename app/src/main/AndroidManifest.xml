@@ -42,7 +42,8 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".ProvasActivity"></activity>
+        <activity android:name=".ProvasActivity" />
+        <activity android:name=".DetalhesProvaActivity"></activity>
     </application>
 
 </manifest>
