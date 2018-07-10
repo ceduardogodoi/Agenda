@@ -14,7 +14,7 @@ public class DetalhesProvaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detalhes_prova);
+        setContentView(R.layout.fragment_detalhes_prova);
 
         Intent intent = getIntent();
         Prova prova = (Prova) intent.getSerializableExtra("prova");

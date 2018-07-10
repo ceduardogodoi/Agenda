@@ -1,16 +1,9 @@
 package br.com.alura.agenda;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Toast;
-
-import java.util.Arrays;
-import java.util.List;
-
-import br.com.alura.agenda.modelo.Prova;
 
 public class ProvasActivity extends AppCompatActivity {
 
@@ -19,27 +12,13 @@ public class ProvasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_provas);
 
-        List<String> topicosPort = Arrays.asList("Sujeito", "Objeto direto", "Objeto indireto");
-        Prova provaPortugues = new Prova("Português", "25/05/2016", topicosPort);
+        FragmentManager fragmentManager = getSupportFragmentManager();
 
-        List<String> topicosMat = Arrays.asList("Equações de Segundo Grau", "Trigonometria");
-        Prova provaMatematica = new Prova("Matemática", "27/05/2016", topicosMat);
+        FragmentTransaction tx = fragmentManager.beginTransaction();
 
-        List<Prova> provas = Arrays.asList(provaPortugues, provaMatematica);
-        ArrayAdapter<Prova> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, provas);
+        tx.replace(R.id.frame_principal, new ListaProvasFragment());
 
-        ListView lista = findViewById(R.id.provas_lista);
-        lista.setAdapter(adapter);
-
-        lista.setOnItemClickListener((parent, view, position, id) -> {
-            Prova prova = (Prova) parent.getItemAtPosition(position);
-            Toast.makeText(ProvasActivity.this, "Clicou na prova de " + prova, Toast.LENGTH_SHORT).show();
-
-            Intent vaiParaDetalhes = new Intent(ProvasActivity.this, DetalhesProvaActivity.class);
-            vaiParaDetalhes.putExtra("prova", prova);
-
-            startActivity(vaiParaDetalhes);
-        });
+        tx.commit();
     }
 
 }
