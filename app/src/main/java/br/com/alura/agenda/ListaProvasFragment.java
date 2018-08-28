@@ -1,6 +1,5 @@
 package br.com.alura.agenda;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -40,10 +39,8 @@ public class ListaProvasFragment extends Fragment {
             Prova prova = (Prova) parent.getItemAtPosition(position);
             Toast.makeText(getContext(), "Clicou na prova de " + prova, Toast.LENGTH_SHORT).show();
 
-            Intent vaiParaDetalhes = new Intent(getContext(), DetalhesProvaActivity.class);
-            vaiParaDetalhes.putExtra("prova", prova);
-
-            startActivity(vaiParaDetalhes);
+            ProvasActivity provasActivity = (ProvasActivity) getActivity();
+            provasActivity.selecionaProva(prova);
         });
 
         return viewInflated;
