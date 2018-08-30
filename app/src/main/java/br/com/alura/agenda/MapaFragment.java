@@ -3,7 +3,6 @@ package br.com.alura.agenda;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -11,7 +10,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.IOException;
@@ -22,6 +20,8 @@ import br.com.alura.agenda.modelo.Aluno;
 
 public class MapaFragment extends SupportMapFragment implements OnMapReadyCallback {
 
+    private GoogleMap mapa;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,10 +31,11 @@ public class MapaFragment extends SupportMapFragment implements OnMapReadyCallba
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        this.mapa = googleMap;
+
         LatLng posicaoDaEscola = pegaCoordenadaDoEndereco("Rua Vergueiro 3185, Vila Mariana, Sao Paulo");
         if (posicaoDaEscola != null) {
-            CameraUpdate update = CameraUpdateFactory.newLatLngZoom(posicaoDaEscola, 17);
-            googleMap.moveCamera(update);
+            centralizaEm(posicaoDaEscola);
         }
 
         AlunoDAO alunoDAO = new AlunoDAO(getContext());
@@ -51,6 +52,15 @@ public class MapaFragment extends SupportMapFragment implements OnMapReadyCallba
         }
 
         alunoDAO.close();
+
+        new Localizador(getContext(), this);
+    }
+
+    public void centralizaEm(LatLng coordenada) {
+        if (mapa != null) {
+            CameraUpdate update = CameraUpdateFactory.newLatLngZoom(coordenada, 17);
+            mapa.moveCamera(update);
+        }
     }
 
     private LatLng pegaCoordenadaDoEndereco(String endereco) {
